@@ -4,3 +4,9 @@ export function formattedDate(date: Date): string {
   // which is why we call the .split at the end
   return date.toLocaleDateString('en-US')
 }
+
+export interface Streak {
+  currentCount: number
+  startDate: string
+  lastLoginDate: string
+}

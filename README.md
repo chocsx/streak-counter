@@ -9,3 +9,5 @@ This is a basic streak counter - inspired by Duolingo - written in TypeScript an
 ```shell
 yarn add @chocsx/streak-counter
 ```
+
+[![Edit streak-counter](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/streak-counter-ts-course-forked-bce7iz?fontsize=14&hidenavigation=1&theme=dark)

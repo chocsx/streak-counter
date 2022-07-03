@@ -1,3 +1,5 @@
+export const KEY = 'streak';
+
 export function formattedDate(date: Date): string {
   // returns date as 11/11/2021
   // other times it returns 11/11/2021, 12:00:00 AM
@@ -25,4 +27,8 @@ export function buildStreak(
     ...defaultStreak,
     ...overrideDefaults
   }
+}
+
+export function updateStreak(_localStorage: Storage, streak: Streak): void {
+  _localStorage.setItem(KEY, JSON.stringify(streak));
 }

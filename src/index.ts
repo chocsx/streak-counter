@@ -1,6 +1,4 @@
-import { formattedDate, Streak, buildStreak } from "./utils"
-
-const KEY = 'streak';
+import { formattedDate, Streak, buildStreak, updateStreak, KEY } from "./utils"
 
 function shouldIncrementOrResetStreakCount(
   currentDate: Date,
@@ -38,14 +36,14 @@ export function streakCounter(_localStorage: Storage, date: Date): Streak {
           lastLoginDate: formattedDate(date),
         });
         // store in localStorage
-        _localStorage.setItem(KEY, JSON.stringify(updatedStreak));
+        updateStreak(_localStorage, updatedStreak);
 
         return updatedStreak;
       }
       if (SHOULD_RESET) {
         const updatedStreak = buildStreak(date)
 
-        _localStorage.setItem(KEY, JSON.stringify(updatedStreak));
+        updateStreak(_localStorage,updatedStreak);
         return updatedStreak;
       }
 
@@ -57,7 +55,7 @@ export function streakCounter(_localStorage: Storage, date: Date): Streak {
   }
   const streak =  buildStreak(date)
 
-  _localStorage.setItem(KEY, JSON.stringify(streak));
+  updateStreak(_localStorage, streak);
 
   return streak
 }

@@ -103,6 +103,18 @@ describe('streakCounter', () => {
       expect(streak.currentCount).toBe(2)
     })
 
+    it('should reset if not consecutive', () => {
+      const date = new Date('12/13/2021')
+      const streak = streakCounter(mockLocalStorage, date)
+    
+      expect(streak.currentCount).toBe(2)
+    
+      // Skip a day and break the streak
+      const dateUpdated = new Date('12/15/2021')
+      const streakUpdated = streakCounter(mockLocalStorage, dateUpdated)
+    
+      expect(streakUpdated.currentCount).toBe(1)
+    })
     it('should save the reset streak to localStorage', () => {
       const key = 'streak'
       const date = new Date('12/13/2021')
@@ -131,19 +143,6 @@ describe('streakCounter', () => {
       const streakUpdated = streakCounter(mockLocalStorage, dateUpdated)
     
       expect(streakUpdated.currentCount).toBe(2)
-    })
-    
-    it('should reset if not consecutive', () => {
-      const date = new Date('12/13/2021')
-      const streak = streakCounter(mockLocalStorage, date)
-    
-      expect(streak.currentCount).toBe(2)
-    
-      // Skip a day and break the streak
-      const dateUpdated = new Date('12/15/2021')
-      const streakUpdated = streakCounter(mockLocalStorage, dateUpdated)
-    
-      expect(streakUpdated.currentCount).toBe(1)
     })
   })
 })
